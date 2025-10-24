@@ -4,15 +4,27 @@ using UnityEngine;
 public class ChangeGravityBehaviour : MonoBehaviour
 {
     private MoveBehaviour _moveBehaviour;
-    [SerializeField] private float jumpForce;
+    private bool _isGravityInverted = false;
 
     private void Awake()
     {
         _moveBehaviour = GetComponent<MoveBehaviour>();
     }
 
-    public void Jump()
+    public void ChangeGravity()
     {
-        _moveBehaviour.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        var gravityScale = _moveBehaviour.GetComponent<Rigidbody2D>().gravityScale;
+        _moveBehaviour.SetGravityScale(gravityScale * -1);
+        
+        _isGravityInverted = !_isGravityInverted;
+
+        if (_isGravityInverted)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
     }
 }

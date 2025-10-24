@@ -24,7 +24,11 @@ public class Player : Character, IPlayerActions
 
     public void OnChangeGravity(InputAction.CallbackContext context)
     {
-        _changeGravityBh.Jump();
+        if (_moveBehaviour.IsGrounded())
+        {
+            _changeGravityBh.ChangeGravity();
+            _animationBehaviour.RunAnimation("Jump");
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -33,6 +37,7 @@ public class Player : Character, IPlayerActions
         {
             var inputVector = new Vector2(context.ReadValue<Vector2>().x, 0f);
             _moveBehaviour.MoveCharacter(inputVector, 10f);
+            //_animationBehaviour.RunAnimation("Run");
         }
         else if (context.canceled)
         {
