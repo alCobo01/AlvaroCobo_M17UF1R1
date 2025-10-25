@@ -3,25 +3,22 @@ using UnityEngine;
 public class AnimationBehaviour : MonoBehaviour
 {
     private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
+    private MoveBehaviour _moveBehaviour;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _moveBehaviour = GetComponent<MoveBehaviour>();
     }
 
-    public void RunAnimation(Vector2 direction)
+    private void Update()
     {
-        if (direction.x > 0)
-        {
-            _spriteRenderer.flipX = false;
-        }
-        else if (direction.x < 0)
-        {
-            _spriteRenderer.flipX = true;
-        }
-        _animator.SetFloat("Velocity", direction.magnitude);
+        _animator.SetBool("IsGrounded", _moveBehaviour.IsGrounded());
+    }
+
+    public void RunAnimation(string animation)
+    {
+        _animator.SetTrigger(animation);
     }
 
 }
