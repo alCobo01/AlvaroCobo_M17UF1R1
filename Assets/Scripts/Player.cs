@@ -37,7 +37,7 @@ public class Player : Character, IPlayerActions
         {
             var inputVector = new Vector2(context.ReadValue<Vector2>().x, 0f);
             _moveBehaviour.MoveCharacter(inputVector, 10f);
-            //_animationBehaviour.RunAnimation("Run");
+            _animationBehaviour.RunAnimation("Run");
         }
         else if (context.canceled)
         {
