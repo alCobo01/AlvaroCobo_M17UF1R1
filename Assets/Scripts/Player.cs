@@ -5,6 +5,7 @@ using static InputSystem_Actions;
 public class Player : Character, IPlayerActions
 {
     private InputSystem_Actions inputActions;
+    private Vector2 _moveInput;
 
     private void Awake()
     {
@@ -22,8 +23,24 @@ public class Player : Character, IPlayerActions
 
     void OnDisable() => inputActions.Disable();
 
+
+    private void FixedUpdate()
+    {
+        _moveBehaviour.MoveCharacter(_moveInput, 8f);
+
+        if (_moveInput.x != 0)
+        {
+            _animationBehaviour.RunAnimation("Run");
+        }
+        else
+        {
+            _animationBehaviour.RunAnimation("Idle");
+        }
+    }
+
     public void OnChangeGravity(InputAction.CallbackContext context)
     {
+        Debug.Log(_moveBehaviour.IsGrounded());
         if (_moveBehaviour.IsGrounded())
         {
             _changeGravityBh.ChangeGravity();
@@ -35,13 +52,11 @@ public class Player : Character, IPlayerActions
     {
         if (context.performed)
         {
-            var inputVector = new Vector2(context.ReadValue<Vector2>().x, 0f);
-            _moveBehaviour.MoveCharacter(inputVector, 10f);
-            _animationBehaviour.RunAnimation("Run");
+            _moveInput = new Vector2(context.ReadValue<Vector2>().x, 0f);
         }
         else if (context.canceled)
         {
-            _moveBehaviour.MoveCharacter(Vector2.zero, 0f);
+            _moveInput = Vector2.zero;
         }
     }
 }
