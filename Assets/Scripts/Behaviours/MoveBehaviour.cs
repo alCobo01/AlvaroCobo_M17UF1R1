@@ -14,7 +14,10 @@ public class MoveBehaviour : MonoBehaviour
 
     public void MoveCharacter(Vector2 direction, float speed)
     {
-        _rb.linearVelocity = direction.normalized * speed;
+        float newVelocityX = direction.normalized.x * speed;
+        float currentVelocityY = _rb.linearVelocity.y;
+
+        _rb.linearVelocity = new Vector2(newVelocityX, currentVelocityY);
     }
 
     public void SetGravityScale(float gravityScale)
