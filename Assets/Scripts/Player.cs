@@ -4,8 +4,10 @@ using static InputSystem_Actions;
 
 public class Player : Character, IPlayerActions
 {
+    [SerializeField] private GameObject _stateBox;
     private InputSystem_Actions inputActions;
     private Vector2 _moveInput;
+    private IInteractable _currentInteractable;
 
     private void Awake()
     {
@@ -58,6 +60,36 @@ public class Player : Character, IPlayerActions
         else if (context.canceled)
         {
             _moveInput = Vector2.zero;
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed && _currentInteractable != null)
+        {
+            _currentInteractable.Interact();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out IInteractable interactable))
+        {
+            _currentInteractable = interactable;
+            _stateBox.SetActive(true);
+        }
+            
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out IInteractable interactable))
+        {
+            if (_currentInteractable == interactable)
+            {
+                _currentInteractable = null;
+                _stateBox.SetActive(false);
+            } 
         }
     }
 }

@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Terrain
+  - World
   - Water
   - UI
   - Player
-  - 
-  - 
+  - Interactable
+  - PlayerInteractTrigger
   - 
   - 
   - 

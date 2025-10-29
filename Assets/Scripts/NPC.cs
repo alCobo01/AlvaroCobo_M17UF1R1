@@ -17,17 +17,13 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (_isDialogueActive)
-        {
-
-        }
-        else
-        {
-
-        }
+        if (_isDialogueActive) 
+            NextLine();
+        else 
+            StartDialogue();
     }
 
-    private void Start()
+    private void StartDialogue()
     {
         _isDialogueActive = true;
         _dialogueIndex = 0;
@@ -37,7 +33,24 @@ public class NPC : MonoBehaviour, IInteractable
 
         dialoguePanel.SetActive(true);
         StartCoroutine(TypeLine());
+    }
 
+    private void NextLine()
+    {
+        if (_isTyping)
+        {
+            StopAllCoroutines();
+            dialogueText.SetText(dialogueData.dialogueLines[_dialogueIndex]);
+            _isTyping = false;
+        }
+        else
+        {
+            _dialogueIndex++;
+            if (_dialogueIndex < dialogueData.dialogueLines.Length)
+                StartCoroutine(TypeLine());
+            else
+                EndDialogue();
+        }
     }
 
     private IEnumerator TypeLine()
@@ -52,5 +65,13 @@ public class NPC : MonoBehaviour, IInteractable
         }
 
         _isTyping = false;
+    }
+
+    public void EndDialogue()
+    {
+        StopAllCoroutines();
+        _isDialogueActive = false;
+        dialogueText.SetText("");
+        dialoguePanel.SetActive(false);
     }
 }
