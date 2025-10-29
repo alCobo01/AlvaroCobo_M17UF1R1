@@ -3,22 +3,30 @@ using UnityEngine;
 public class AnimationBehaviour : MonoBehaviour
 {
     private Animator _animator;
-    private MoveBehaviour _moveBehaviour;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _moveBehaviour = GetComponent<MoveBehaviour>();
     }
 
-    private void Update()
+    public void SetGrounded(bool isGrounded)
     {
-        _animator.SetBool("IsGrounded", _moveBehaviour.IsGrounded());
+        _animator.SetBool("IsGrounded", isGrounded);
     }
 
-    public void RunAnimation(string animation)
+    public void SetSpeed(float speed)
     {
-        _animator.SetTrigger(animation);
+        _animator.SetFloat("Speed", speed);
+    }
+
+    public void SetVerticalSpeed(float verticalSpeed)
+    {
+        _animator.SetFloat("VerticalSpeed", verticalSpeed);
+    }
+
+    public void TriggerJump()
+    {
+        _animator.SetTrigger("Jump");
     }
 
 }

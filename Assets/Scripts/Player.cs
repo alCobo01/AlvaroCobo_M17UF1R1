@@ -24,27 +24,28 @@ public class Player : Character, IPlayerActions
     void OnDisable() => inputActions.Disable();
 
 
+    private void Update()
+    {
+        bool isGrounded = _moveBehaviour.IsGrounded();
+        float verticalSpeed = _moveBehaviour.GetVerticalSpeed();
+        float horizontalSpeed = Mathf.Abs(_moveInput.x * 8f);
+
+        _animationBehaviour.SetGrounded(isGrounded);
+        _animationBehaviour.SetSpeed(horizontalSpeed);
+        _animationBehaviour.SetVerticalSpeed(verticalSpeed);
+    }
+
     private void FixedUpdate()
     {
         _moveBehaviour.MoveCharacter(_moveInput, 8f);
-
-        if (_moveInput.x != 0)
-        {
-            _animationBehaviour.RunAnimation("Run");
-        }
-        else
-        {
-            _animationBehaviour.RunAnimation("Idle");
-        }
     }
 
     public void OnChangeGravity(InputAction.CallbackContext context)
     {
-        Debug.Log(_moveBehaviour.IsGrounded());
         if (_moveBehaviour.IsGrounded())
         {
             _changeGravityBh.ChangeGravity();
-            _animationBehaviour.RunAnimation("Jump");
+            _animationBehaviour.TriggerJump();
         }
     }
 
