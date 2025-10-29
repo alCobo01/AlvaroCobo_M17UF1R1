@@ -9,6 +9,7 @@ public class AnimationBehaviour : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _moveBehaviour = GetComponent<MoveBehaviour>();
+
     }
 
     private void Update()
