@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da4d52387398df44ae41b20ab34da8d, type: 3}
   m_Name: PinkStar Dialogue
   m_EditorClassIdentifier: 
-  npcName: 
-  npcPortrait: {fileID: 0}
-  dialogueLines: []
+  npcName: Pink Star
+  npcPortrait: {fileID: -4868184338207731717, guid: b08daa6eeb30a934286e91f5238ac4f1, type: 3}
+  dialogueLines:
+  - Hola Chat
+  - Esto es real?
   typingSpeed: 0.05
   voiceSound: {fileID: 0}
-  autoProgressLines: 
+  autoProgressLines: 0100
   autoProgressDelay: 1.5
