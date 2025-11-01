@@ -67,6 +67,15 @@ public class NPC : MonoBehaviour, IInteractable
         _isTyping = false;
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.transform.parent.TryGetComponent(out Player player))
+        {
+            if (_isDialogueActive)
+                EndDialogue();
+        }
+    }
+
     public void EndDialogue()
     {
         StopAllCoroutines();

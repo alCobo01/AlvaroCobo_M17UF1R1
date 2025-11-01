@@ -183,6 +183,7 @@ Transform:
   - {fileID: 345282400}
   - {fileID: 2080404407}
   - {fileID: 841415964}
+  - {fileID: 1694126746}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &339095101
@@ -3165,7 +3166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 1
+  parallaxEffect: 0
 --- !u!95 &345282403
 Animator:
   serializedVersion: 7
@@ -3289,7 +3290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 1
+  parallaxEffect: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4014,7 +4015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 0.8
+  parallaxEffect: 0.4
 --- !u!1 &937106789
 GameObject:
   m_ObjectHideFlags: 0
@@ -4116,7 +4117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 0.5
+  parallaxEffect: 0.2
 --- !u!1 &980279593
 GameObject:
   m_ObjectHideFlags: 0
@@ -4379,7 +4380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39148a1c74a8f9d43987c5c0be20ad42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateBox: {fileID: 0}
+  _stateBox: {fileID: 1584930357}
 --- !u!212 &986417364
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5133,6 +5134,7 @@ GameObject:
   - component: {fileID: 1584930359}
   - component: {fileID: 1584930361}
   - component: {fileID: 1584930360}
+  - component: {fileID: 1584930362}
   m_Layer: 0
   m_Name: StateBox
   m_TagString: Untagged
@@ -5244,6 +5246,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d4499d2cc8b0a4cbf0e0eccd548674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1584930362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584930357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13b6f3d107a1bf4bae7dbc46ae1138e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1694126745
 GameObject:
   m_ObjectHideFlags: 0
@@ -5271,13 +5285,13 @@ Transform:
   m_GameObject: {fileID: 1694126745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.048843697, y: 0.5281251, z: 0}
-  m_LocalScale: {x: 1.0116563, y: 0.87453127, z: 1}
+  m_LocalPosition: {x: -3.99, y: 4.03, z: 3.9954038}
+  m_LocalScale: {x: 3.2373002, y: 2.7985, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 937106790}
   - {fileID: 1976495867}
-  m_Father: {fileID: 2080404407}
+  m_Father: {fileID: 235042243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1694126747
 SpriteRenderer:
@@ -5347,7 +5361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 0.5
+  parallaxEffect: 0.2
 --- !u!1 &1733416157
 GameObject:
   m_ObjectHideFlags: 0
@@ -5742,7 +5756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 0.8
+  parallaxEffect: 0.4
 --- !u!1 &1976495866
 GameObject:
   m_ObjectHideFlags: 0
@@ -5844,7 +5858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 0.5
+  parallaxEffect: 0.2
 --- !u!1 &1987524184
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,7 +5960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 1
+  parallaxEffect: 0
 --- !u!1 &2009779174
 GameObject:
   m_ObjectHideFlags: 0
@@ -6257,7 +6271,6 @@ Transform:
   m_Children:
   - {fileID: 903912539}
   - {fileID: 1905678423}
-  - {fileID: 1694126746}
   m_Father: {fileID: 235042243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2080404408
@@ -6328,7 +6341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420028}
-  parallaxEffect: 0.8
+  parallaxEffect: 0.4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

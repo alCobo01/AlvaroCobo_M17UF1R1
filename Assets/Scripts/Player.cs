@@ -8,6 +8,7 @@ public class Player : Character, IPlayerActions
     private InputSystem_Actions inputActions;
     private Vector2 _moveInput;
     private IInteractable _currentInteractable;
+    private bool _canChangeGravity = true;
 
     private void Awake()
     {
@@ -44,7 +45,7 @@ public class Player : Character, IPlayerActions
 
     public void OnChangeGravity(InputAction.CallbackContext context)
     {
-        if (_moveBehaviour.IsGrounded())
+        if (_moveBehaviour.IsGrounded() && _canChangeGravity)
         {
             _changeGravityBh.ChangeGravity();
             _animationBehaviour.TriggerJump();
@@ -75,6 +76,7 @@ public class Player : Character, IPlayerActions
     {
         if (collision.TryGetComponent(out IInteractable interactable))
         {
+            _canChangeGravity = false;
             _currentInteractable = interactable;
             _stateBox.SetActive(true);
         }
@@ -87,6 +89,7 @@ public class Player : Character, IPlayerActions
         {
             if (_currentInteractable == interactable)
             {
+                _canChangeGravity = true;
                 _currentInteractable = null;
                 _stateBox.SetActive(false);
             } 
