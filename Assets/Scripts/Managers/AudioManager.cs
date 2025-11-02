@@ -62,4 +62,16 @@ public class AudioManager : MonoBehaviour, IAudioService
             musicSource.Play();
         }
     }
+
+    public void PauseMusic()
+    {
+        if (musicSource.isPlaying)
+            musicSource.Pause();
+    }
+
+    public void ResumeMusic()
+    {
+        if (musicSource.clip != null && !musicSource.isPlaying)
+            musicSource.UnPause();
+    }
 }

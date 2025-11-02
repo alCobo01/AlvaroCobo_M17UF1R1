@@ -13,10 +13,17 @@ public class NPC : MonoBehaviour, IInteractable
     private int _dialogueIndex;
     private bool _isTyping, _isDialogueActive;
 
+    private IAudioService _audioService;
+    [SerializeField] private SfxTrack dialogueSfx;
+
+    private void Awake() => _audioService = AudioManager.Instance;
+
     public bool CanInteract() => !_isDialogueActive;
 
     public void Interact()
     {
+        _audioService.PlaySFX(dialogueSfx.name);
+
         if (_isDialogueActive) 
             NextLine();
         else 

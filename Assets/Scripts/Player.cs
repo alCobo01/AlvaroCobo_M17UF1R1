@@ -5,9 +5,12 @@ using static InputSystem_Actions;
 public class Player : Character, IPlayerActions
 {
     [SerializeField] private GameObject _stateBox;
-    private InputSystem_Actions inputActions;
+    [SerializeField] private SfxTrack jumpSfx;
+
+    private InputSystem_Actions _inputActions;
     private Vector2 _moveInput;
     private IInteractable _currentInteractable;
+    private IAudioService _audioService;
     private bool _canChangeGravity = true;
 
     private void Awake()
@@ -16,15 +19,17 @@ public class Player : Character, IPlayerActions
         _changeGravityBh = GetComponent<ChangeGravityBehaviour>();
         _animationBehaviour = GetComponent<AnimationBehaviour>();
 
-        inputActions = new InputSystem_Actions();
-        inputActions.Player.SetCallbacks(this);
+        _inputActions = new InputSystem_Actions();
+        _inputActions.Player.SetCallbacks(this);
+
+        _audioService = AudioManager.Instance;
     }
 
-    void Start() => inputActions.Enable();
+    void Start() => _inputActions.Enable();
 
-    void OnEnable() => inputActions.Enable();
+    void OnEnable() => _inputActions.Enable();
 
-    void OnDisable() => inputActions.Disable();
+    void OnDisable() => _inputActions.Disable();
 
 
     private void Update()
@@ -49,6 +54,7 @@ public class Player : Character, IPlayerActions
         {
             _changeGravityBh.ChangeGravity();
             _animationBehaviour.TriggerJump();
+            _audioService.PlaySFX(jumpSfx.name);
         }
     }
 
