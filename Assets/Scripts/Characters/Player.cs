@@ -10,7 +10,6 @@ public class Player : Character, IPlayerActions
     private InputSystem_Actions _inputActions;
     private Vector2 _moveInput;
     private IInteractable _currentInteractable;
-    private IAudioService _audioService;
     private bool _canChangeGravity = true;
 
     private void Awake()
@@ -35,17 +34,15 @@ public class Player : Character, IPlayerActions
     private void Update()
     {
         bool isGrounded = _moveBehaviour.IsGrounded();
-        float verticalSpeed = _moveBehaviour.GetVerticalSpeed();
-        float horizontalSpeed = Mathf.Abs(_moveInput.x * 8f);
+        float horizontalSpeed = Mathf.Abs(_moveInput.x);
 
         _animationBehaviour.SetGrounded(isGrounded);
         _animationBehaviour.SetSpeed(horizontalSpeed);
-        _animationBehaviour.SetVerticalSpeed(verticalSpeed);
     }
 
     private void FixedUpdate()
     {
-        _moveBehaviour.MoveCharacter(_moveInput, 8f);
+        _moveBehaviour.MoveCharacter(_moveInput);
     }
 
     public void OnChangeGravity(InputAction.CallbackContext context)
@@ -85,8 +82,7 @@ public class Player : Character, IPlayerActions
             _canChangeGravity = false;
             _currentInteractable = interactable;
             _stateBox.SetActive(true);
-        }
-            
+        }  
     }
 
     private void OnTriggerExit2D(Collider2D collision)

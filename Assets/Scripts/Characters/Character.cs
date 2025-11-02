@@ -8,11 +8,13 @@ public class Character : MonoBehaviour
     protected MoveBehaviour _moveBehaviour;
     protected ChangeGravityBehaviour _changeGravityBh;
     protected AnimationBehaviour _animationBehaviour;
+    protected IAudioService _audioService;
 
     private void Awake()
     {
         _moveBehaviour = GetComponent<MoveBehaviour>();
         _changeGravityBh = GetComponent<ChangeGravityBehaviour>();
         _animationBehaviour = GetComponent<AnimationBehaviour>();
+        _audioService = AudioManager.Instance;
     }
 }

@@ -25,11 +25,6 @@ public class AnimationBehaviour : MonoBehaviour
         _animator.SetFloat("Speed", speed);
     }
 
-    public void SetVerticalSpeed(float verticalSpeed)
-    {
-        _animator.SetFloat("VerticalSpeed", verticalSpeed);
-    }
-
     public void TriggerJump()
     {
         _animator.SetTrigger("Jump");
