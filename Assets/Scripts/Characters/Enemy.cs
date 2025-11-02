@@ -5,13 +5,12 @@ public class Enemy : Character
 {
     private Vector2 _direction = new Vector2(1, 0);
 
-    [SerializeField] private float minMoveCooldown = 1f;
-    [SerializeField] private float maxMoveCooldown = 3f;
+    [SerializeField] private float patrolPointA;
+    [SerializeField] private float patrolPointB;
 
     [SerializeField] private float minChangeGravityCooldown = 1.5f;
     [SerializeField] private float maxChangeGravityCooldown = 4f;
 
-    private Coroutine _moveCoroutine;
     private Coroutine _changeGravityCoroutine;
 
     private void Awake()
@@ -24,8 +23,7 @@ public class Enemy : Character
 
     private void Start()
     {
-        _moveBehaviour.MoveCharacter(_direction);
-        StartEnemyBehaviours();
+        _changeGravityCoroutine = StartCoroutine(ChangeGravityLoop());
     }
 
     private void Update()
@@ -35,21 +33,13 @@ public class Enemy : Character
 
         _animationBehaviour.SetGrounded(isGrounded);
         _animationBehaviour.SetSpeed(horizontalSpeed);
-    }
 
-    public void StartEnemyBehaviours()
-    {
-        _moveCoroutine = StartCoroutine(MoveLoop());
-        _changeGravityCoroutine = StartCoroutine(ChangeGravityLoop());
+        CheckPatrol();
+        _moveBehaviour.MoveCharacter(_direction);
     }
 
     public void StopEnemyBehaviours()
     {
-        if (_moveCoroutine != null)
-        {
-            StopCoroutine(_moveCoroutine);
-            _moveCoroutine = null;
-        }
         if (_changeGravityCoroutine != null)
         {
             StopCoroutine(_changeGravityCoroutine);
@@ -57,23 +47,23 @@ public class Enemy : Character
         }
     }
 
+    private void CheckPatrol()
+    {
+        if (_direction.x > 0 && transform.position.x >= patrolPointB)
+        {
+            _direction.x = -1;
+        }
+        else if (_direction.x < 0 && transform.position.x <= patrolPointA)
+        {
+            _direction.x = 1;
+        }
+    }
+
     //Control methods to avoid coroutines running when not needed
     private void OnDisable() => StopEnemyBehaviours();
     private void OnDestroy() => StopEnemyBehaviours();
 
-    //Coroutines for movement and gravity change
-    private IEnumerator MoveLoop()
-    {
-        while (true)
-        {
-            float waitTime = Random.Range(minMoveCooldown, maxMoveCooldown);
-            yield return new WaitForSeconds(waitTime);
-
-            _direction.x *= -1;
-            _moveBehaviour.MoveCharacter(_direction);
-        }
-    }
-
+    //Coroutines for gravity change
     private IEnumerator ChangeGravityLoop()
     {
         while (true)
@@ -83,7 +73,7 @@ public class Enemy : Character
             if (_moveBehaviour.IsGrounded())
             {
                 _changeGravityBh.ChangeGravity();
-                _animationBehaviour.TriggerJump();
+                _animationBehaviour.Trigger("Jump");
             }
         }
     }

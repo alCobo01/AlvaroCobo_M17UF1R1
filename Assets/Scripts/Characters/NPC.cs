@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Collider2D))]
 public class NPC : MonoBehaviour, IInteractable
 {
     [SerializeField] private NPCDialogue dialogueData;

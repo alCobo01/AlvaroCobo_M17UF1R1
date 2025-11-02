@@ -1,10 +1,16 @@
+using System.Collections;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private PlayerDeathHandler playerDeathHandler;
+    [SerializeField] private Player player;
 
     [SerializeField] private MusicTrack musicTrack;
+    [SerializeField] private SfxTrack gameOverTrack;
+
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private float gameOverDelay = 1.5f;
+
     private IAudioService _audioService;
 
     private void Start()
@@ -12,14 +18,15 @@ public class LevelManager : MonoBehaviour
         _audioService = AudioManager.Instance;
         _audioService.PlayMusic(musicTrack.name);
 
-        playerDeathHandler.OnPlayerDied.AddListener(HandlePlayerDied);
+        player.OnPlayerDied.AddListener(() => StartCoroutine(GameOver()));
     }
 
-    private void HandlePlayerDied()
+    private IEnumerator GameOver()
     {
-        //Activar pantalla game over y sfx de muerte
-        //_audioService.PauseMusic();
-        Debug.Log("Player Died - Game Over");
+        yield return new WaitForSeconds(gameOverDelay);
+        Time.timeScale = 0f;
+        _audioService.PauseMusic();
+        _audioService.PlaySFX(gameOverTrack.name);
+        gameOverScreen.SetActive(true);
     }
-
 }

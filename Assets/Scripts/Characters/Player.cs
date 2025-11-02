@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static InputSystem_Actions;
 
 public class Player : Character, IPlayerActions
 {
+    public UnityEvent OnPlayerDied;
+
     [SerializeField] private GameObject _stateBox;
     [SerializeField] private SfxTrack jumpSfx;
 
@@ -11,6 +14,7 @@ public class Player : Character, IPlayerActions
     private Vector2 _moveInput;
     private IInteractable _currentInteractable;
     private bool _canChangeGravity = true;
+    private bool _isAlive = true;   
 
     private void Awake()
     {
@@ -50,7 +54,7 @@ public class Player : Character, IPlayerActions
         if (_moveBehaviour.IsGrounded() && _canChangeGravity)
         {
             _changeGravityBh.ChangeGravity();
-            _animationBehaviour.TriggerJump();
+            _animationBehaviour.Trigger("Jump");
             _audioService.PlaySFX(jumpSfx.name);
         }
     }
@@ -97,4 +101,13 @@ public class Player : Character, IPlayerActions
             } 
         }
     }
+
+    public void Die()
+    {
+        if (!_isAlive) return;
+        _isAlive = false;
+        _animationBehaviour.Trigger("Death");
+        OnPlayerDied?.Invoke();
+    }
+
 }

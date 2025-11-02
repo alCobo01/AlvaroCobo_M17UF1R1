@@ -4,11 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class InstantDeathTrigger : MonoBehaviour, IDeathTrigger
 {
-    public void ActivateDeathTrigger(PlayerDeathHandler player) => player.Die();
+    public void ActivateDeathTrigger(Player player) => player.Die();
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<PlayerDeathHandler>(out var player))
+        if (collision.gameObject.TryGetComponent<Player>(out var player))
         {
             ActivateDeathTrigger(player);
         }
