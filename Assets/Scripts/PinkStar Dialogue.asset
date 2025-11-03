@@ -15,8 +15,9 @@ MonoBehaviour:
   npcName: Pink Star
   npcPortrait: {fileID: -4868184338207731717, guid: b08daa6eeb30a934286e91f5238ac4f1, type: 3}
   dialogueLines:
-  - Hola Chat
-  - Esto es real?
+  - Be careful with that little monster!
+  - My family has died here...
+  - Don't touch it please...
   typingSpeed: 0.05
   voiceSound: {fileID: 0}
   autoProgressLines: 0100
