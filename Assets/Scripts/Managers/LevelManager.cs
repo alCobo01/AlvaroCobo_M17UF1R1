@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private SfxTrack gameWinnedTrack;
 
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject gameWonScreen;
     [SerializeField] private float gameOverDelay = 1.5f;
     [SerializeField] private float gameWinnedDelay = 1f;
 
@@ -42,15 +43,15 @@ public class LevelManager : MonoBehaviour
 
     public void WinGame()
     {
-        StartCoroutine(HandleGameWinned());
+        StartCoroutine(HandleGameWon());
     }
 
-    private IEnumerator HandleGameWinned()
+    private IEnumerator HandleGameWon()
     {
         yield return new WaitForSeconds(gameWinnedDelay);
         Time.timeScale = 0f;
         _audioService.PauseMusic();
         _audioService.PlaySFX(gameWinnedTrack.name);
-        gameOverScreen.SetActive(true);
+        gameWonScreen.SetActive(true);
     }
 }

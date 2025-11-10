@@ -75,6 +75,7 @@ public class Player : Character, IPlayerActions
     {
         if (context.performed && _currentInteractable != null)
         {
+            Debug.Log("Interacting with " + _currentInteractable);  
             _currentInteractable.Interact();
         }
     }

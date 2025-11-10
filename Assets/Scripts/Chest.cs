@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(AnimationBehaviour))]
 public class Chest : MonoBehaviour, IInteractable
 {
     private AnimationBehaviour _animationBehaviour;
