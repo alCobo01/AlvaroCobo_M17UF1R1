@@ -1,7 +1,6 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
 public class InstantDeathTrigger : MonoBehaviour, IDeathTrigger
 {
     public void ActivateDeathTrigger(Player player) => player.Die();
