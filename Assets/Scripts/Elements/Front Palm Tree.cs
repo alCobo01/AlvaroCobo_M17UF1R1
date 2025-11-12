@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class FrontPallmTree : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+public class FrontPalmTree : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private LayerMask playerMask;
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
+        Debug.Log($"Collision Detected with {collision.gameObject.name}, GM layer {gameObject.layer}, playermask {playerMask.value}");    
+        if (collision.gameObject.layer == playerMask)   
+        {
+            Vector2 normalizedImpact = collision.GetContact(0).normal;
+            Debug.Log(normalizedImpact);    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            if (normalizedImpact.y < 0)
+            {
+                Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            }
+        }
     }
 }
