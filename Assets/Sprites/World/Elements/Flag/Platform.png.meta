@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8483c433f04db314893c68590fdf6517
+guid: 955371a60f52cab49a2754b270ce28cf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8736130178314038248
-    second: Front Palm Tree Top 02_0
+      213: 2695397407002535339
+    second: Platform_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Front Palm Tree Top 02_0
+      name: Platform_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 39
-        height: 32
+        width: 30
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 814950a83e703c680800000000000000
-      internalID: -8736130178314038248
+      spriteID: ba525ec29a9f76520800000000000000
+      internalID: 2695397407002535339
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Front Palm Tree Top 02_0: -8736130178314038248
+      Platform_0: 2695397407002535339
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
