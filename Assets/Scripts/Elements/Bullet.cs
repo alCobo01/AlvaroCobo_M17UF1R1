@@ -10,9 +10,9 @@ public class Bullet : MonoBehaviour
     private void ReturnToPool()
     {
         if (_ownerPool != null)
-            _ownerPool.Push(this.gameObject);   
+            _ownerPool.Push(gameObject);   
         else
-            Destroy(this.gameObject);
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
