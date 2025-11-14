@@ -1,11 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(AnimationBehaviour))]
-public class Chest : MonoBehaviour, IInteractable
+public class Chest : AnimatedWorldElement, IInteractable
 {
-    private AnimationBehaviour _animationBehaviour;
-
     private void Awake()
     {
         _animationBehaviour = GetComponent<AnimationBehaviour>();

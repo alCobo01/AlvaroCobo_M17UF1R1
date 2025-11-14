@@ -1,12 +1,8 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AnimationBehaviour))]
-[RequireComponent(typeof(Animator))]
-public class FireTimer : MonoBehaviour
+public class FireTimer : AnimatedWorldElement
 {
     [SerializeField] private float fireRate = 1f;
-    private AnimationBehaviour _animationBehaviour;
-
     private float _fireTimer;
 
     private void Awake()
