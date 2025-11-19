@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -6,6 +5,7 @@ using UnityEngine;
 public class Bullet : AnimatedWorldElement
 {
     [SerializeField] private LayerMask collisionLayer;
+    [SerializeField] private DamageCollider damageCollider;
 
     private IPooleable _ownerPool;
     private Rigidbody2D _rb;
@@ -18,17 +18,18 @@ public class Bullet : AnimatedWorldElement
         _collider = GetComponent<Collider2D>();
     }
 
+    private void OnEnable()
+    {
+        _collider.enabled = true;
+        damageCollider.EnableCollider();
+    }
+
     public void SetOwnerPool(IPooleable pool) => _ownerPool = pool;
 
     public void ReturnToPool()
     {
-        Debug.Log("Bullet explosion animation finished");
-        Debug.Log(_ownerPool.ToString());
         if (_ownerPool != null)
-        {
-            Debug.Log("Returning bullet to pool");  
             _ownerPool.Push(gameObject);
-        }
         else
             Destroy(gameObject);
     }
@@ -39,6 +40,7 @@ public class Bullet : AnimatedWorldElement
         {
             _rb.linearVelocity = Vector2.zero;
             _collider.enabled = false;
+            damageCollider.DisableCollider();
             _animationBehaviour.Trigger("Explode");
         }
     }
