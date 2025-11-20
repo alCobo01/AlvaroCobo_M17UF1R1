@@ -603,8 +603,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235042242}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6351345, y: -2.555309, z: -3.9954038}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.9902687, y: -2.50335, z: -3.9954038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16762,7 +16762,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4172404, y: 1.7920437, z: -6.004596}
+  m_LocalPosition: {x: 2.4173722, y: 1.7920437, z: -6.004596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19134,13 +19134,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1316836318}
   - component: {fileID: 1316836320}
+  - component: {fileID: 1316836321}
   m_Layer: 0
   m_Name: Fondo A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1316836318
 Transform:
   m_ObjectHideFlags: 0
@@ -19211,6 +19212,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1316836321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316836317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3127290e69682a748bff2576de31e859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCamera: {fileID: 986417357}
+  parallaxEffect: 0
 --- !u!1 &1333063267
 GameObject:
   m_ObjectHideFlags: 0
@@ -21803,7 +21818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1899711190
 Transform:
   m_ObjectHideFlags: 0
@@ -21831,8 +21846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3127290e69682a748bff2576de31e859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameCamera: {fileID: 519420028}
-  parallaxEffect: 0.8
+  gameCamera: {fileID: 986417357}
+  parallaxEffect: 0.3
 --- !u!212 &1899711192
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22559,7 +22574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2032494411
 Transform:
   m_ObjectHideFlags: 0
@@ -22587,8 +22602,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3127290e69682a748bff2576de31e859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameCamera: {fileID: 519420028}
-  parallaxEffect: 0.5
+  gameCamera: {fileID: 986417357}
+  parallaxEffect: 0.3
 --- !u!212 &2032494413
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23801,9 +23816,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 619394802}
   - {fileID: 1299441010}
-  - {fileID: 1308770529}
-  - {fileID: 235042243}
   - {fileID: 3641085}
   - {fileID: 1676428332}
   - {fileID: 1886444043}
   - {fileID: 1803736848}
+  - {fileID: 1308770529}
+  - {fileID: 235042243}
