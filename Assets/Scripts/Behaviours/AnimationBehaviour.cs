@@ -1,27 +1,33 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class AnimationBehaviour : MonoBehaviour
 {
     private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void RunAnimation(Vector2 direction)
+    public void SetGrounded(bool isGrounded)
     {
-        if (direction.x > 0)
-        {
-            _spriteRenderer.flipX = false;
-        }
-        else if (direction.x < 0)
-        {
-            _spriteRenderer.flipX = true;
-        }
-        _animator.SetFloat("Velocity", direction.magnitude);
+        _animator.SetBool("IsGrounded", isGrounded);
+    }
+
+    public void SetBool(string parameterName, bool value)
+    {
+        _animator.SetBool(parameterName, value);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        _animator.SetFloat("Speed", speed);
+    }
+
+    public void Trigger(string triggerName)
+    {
+        _animator.SetTrigger(triggerName);
     }
 
 }

@@ -4,26 +4,25 @@ using UnityEngine;
 public class MoveBehaviour : MonoBehaviour
 {
     private Rigidbody2D _rb;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckDistance = 1.5f;
+    [SerializeField] private float velocityMultiplier = 8f;
 
-    private void Awake()
+    private void Awake() => _rb = GetComponent<Rigidbody2D>();
+
+    public void MoveCharacter(Vector2 direction)
     {
-        _rb = GetComponent<Rigidbody2D>();
+        float newVelocityX = direction.normalized.x * velocityMultiplier;
+        float currentVelocityY = _rb.linearVelocity.y;
+
+        _rb.linearVelocity = new Vector2(newVelocityX, currentVelocityY);
     }
 
-    public void MoveCharacter(Vector2 direction, float speed)
-    {
-        _rb.linearVelocity = direction.normalized * speed;
-    }
+    public void SetGravityScale(float gravityScale) => _rb.gravityScale = gravityScale;
 
-    public void AddForce(Vector2 force)
+    public bool IsGrounded()
     {
-        _rb.AddForce(force);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer);       
+        return hit.collider != null;
     }
-
-    public void AddForce(Vector2 force, ForceMode2D forceMode)
-    {
-        _rb.AddForce(force, forceMode);
-    }
-
-    public Vector2 GetPosition() => _rb.position;
 }

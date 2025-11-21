@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da4d52387398df44ae41b20ab34da8d, type: 3}
+  m_Name: PinkStar Dialogue
+  m_EditorClassIdentifier: 
+  npcName: Pink Star
+  npcPortrait: {fileID: -4868184338207731717, guid: b08daa6eeb30a934286e91f5238ac4f1, type: 3}
+  dialogueLines:
+  - Be careful with that little monster!
+  - My family has died here...
+  - Don't touch it please...
+  typingSpeed: 0.05
+  voiceSound: {fileID: 0}
+  autoProgressLines: 0100
+  autoProgressDelay: 1.5

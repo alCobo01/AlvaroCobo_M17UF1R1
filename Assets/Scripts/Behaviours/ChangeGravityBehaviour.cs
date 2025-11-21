@@ -1,18 +1,26 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(MoveBehaviour))]
 public class ChangeGravityBehaviour : MonoBehaviour
 {
     private MoveBehaviour _moveBehaviour;
-    [SerializeField] private float jumpForce;
+    private Rigidbody2D _rigidbody2D;
+    private bool _isGravityInverted = false;
 
     private void Awake()
-    {
+    {         
         _moveBehaviour = GetComponent<MoveBehaviour>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void Jump()
+    public void ChangeGravity()
     {
-        _moveBehaviour.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        var gravityScale = _rigidbody2D.gravityScale;
+        _moveBehaviour.SetGravityScale(gravityScale * -1);
+        
+        _isGravityInverted = !_isGravityInverted;
+
+        transform.rotation = Quaternion.Euler(0f, 0f, _isGravityInverted ? 180f : 0f);
     }
 }
