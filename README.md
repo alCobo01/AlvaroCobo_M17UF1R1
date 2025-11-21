@@ -1,45 +1,37 @@
-# 🎮 Crusty Adventures
+# Crusty Adventures
 
-> A 2D platformer where you control the laws of physics!
+## Overview
 
-## 📖 Overview
+**Crusty Adventures** is a 2D platformer game with lateral visualitzation.
 
-**Crusty Adventures** is a Unity-based 2D platformer game that challenges players to navigate through levels by manipulating gravity. With a mix of puzzle-solving and reflex-based gameplay, players must dodge enemies, interact with NPCs, and avoid deadly traps to reach the end.
+![MainMenu Screenshot](/MainMenu%20Screenshot.png)
 
-## ✨ Key Features
+![MainGame Screenshot](/MainGame%20Screenshot.png)
 
-### 🕹️ Core Mechanics
-- **Gravity Manipulation**: Defy physics by switching gravity at will! Walk on ceilings and floors to traverse complex levels.
-- **Dynamic Movement**: Smooth character movement with jumping and grounding logic.
-- **Interaction System**: Engage with the world! Talk to NPCs and trigger events through a robust interaction system.
+## Key Features
 
-### 🤖 Enemies
+### Core Mechanics
+- **Gravity Manipulation**: Switch gravity on your will to walk on ceillings or world elements.
+- **Interaction System**: Talk to NPCs and trigger events through the game.
+
+### Enemies
 - **Patrolling Enemies**: Enemies patrol designated areas, with the power to switch gravity every random seconds.
 
-### ⚔️ Combat & Hazards
+### Combat & Hazards
 - **Object Pooling System**: Optimized performance for projectiles like bullets using a custom object pool.
-- **Deadly Traps**: Watch out for cannons and instant death triggers that punish mistakes instantly.
+- **Deadly Traps**: Watch out for cannons and spikes that kill you instantly.
 
-### 🔊 Audio & Atmosphere
-- **Immersive Audio**: A centralized `AudioManager` handles background music and sound effects for actions like jumping, dying, and dialogue.
-- **Dialogue System**: Storytelling elements delivered through an interactive dialogue UI with typing effects.
+### Audio
+- **Background music and SFX**: Through the whole game, a background melody can be heard. In addition, some SFX sounds sound when an action is triggered: changing gravity, interacting, completing the level and loosing the game.
 
-## 🛠️ Technical Highlights
+### Animations
+- **Idle and status animations**: Almost everything in the game is animated! Trees, water, ship, flag, characters, cannon, ball explosion, chest... 
 
-- **Input System**: Built with Unity's new Input System for responsive and modern control support.
-- **Singleton Managers**: Efficient management of game levels, audio, and menus using Singleton patterns.
-- **Event-Driven Architecture**: Decoupled systems using Unity Events for cleaner code (e.g., Player Death events).
+### Menus (User Interface)
+- **Main Menu**: When starting the game, the main menu is shown.
+- **In-game menus**: A menu is available for every status: when loosing, winning or pausing the game. The in-games menus gives the possibility to restart or quit the game.
 
-## 📐 SOLID Principles Implementation
-
-This project adheres to SOLID principles to ensure code maintainability and scalability:
-
-- **Single Responsibility Principle (SRP)**: Classes like `Player` delegate specific logic (Movement, Gravity, Animation) to specialized behaviours (`MoveBehaviour`, `ChangeGravityBehaviour`) rather than handling everything themselves.
-- **Open/Closed Principle (OCP)**: The `Character` base class allows for new character types (like `Enemy`) to be added without modifying existing code.
-- **Interface Segregation Principle (ISP)**: Specific interfaces like `IInteractable` and `IAudioService` ensure that classes only implement methods they actually need.
-- **Dependency Inversion Principle (DIP)**: The `Player` interacts with abstractions (`IInteractable`) rather than concrete implementations, allowing for flexible interaction with any object (NPCs, Chests, etc.).
-
-## 🕹️ Controls
+## Controls
 
 | Action | Input (Keyboard) |
 | :--- | :--- |
