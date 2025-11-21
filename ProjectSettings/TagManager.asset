@@ -50,22 +50,22 @@ TagManager:
   - name: 3BackElements
     uniqueID: 2118975049
     locked: 0
-  - name: Water
+  - name: 4Water
     uniqueID: 2933151609
-    locked: 0
-  - name: 3Terrain
-    uniqueID: 3314173827
     locked: 0
   - name: 5Characters
     uniqueID: 1200344531
     locked: 0
-  - name: 4Player
+  - name: 6Player
     uniqueID: 714285231
     locked: 0
-  - name: Enemy
+  - name: 7Enemy
     uniqueID: 2265776887
     locked: 0
-  - name: 6FrontElements
+  - name: 7Terrain
+    uniqueID: 3314173827
+    locked: 0
+  - name: 9FrontElements
     uniqueID: 2485995799
     locked: 0
   m_RenderingLayers:

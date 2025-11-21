@@ -34,11 +34,11 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(gameOverDelay);
-        Time.timeScale = 0f;
         _audioService.PauseMusic();
         _audioService.PlaySFX(gameOverTrack.name);
+        yield return new WaitForSeconds(gameOverDelay);
         gameOverScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void WinGame()
@@ -48,10 +48,10 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator HandleGameWon()
     {
-        yield return new WaitForSeconds(gameWinnedDelay);
-        Time.timeScale = 0f;
         _audioService.PauseMusic();
         _audioService.PlaySFX(gameWinnedTrack.name);
+        yield return new WaitForSeconds(gameWinnedDelay);
         gameWonScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

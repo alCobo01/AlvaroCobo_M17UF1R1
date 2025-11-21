@@ -22,7 +22,7 @@ public class MoveBehaviour : MonoBehaviour
 
     public bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer);       
         return hit.collider != null;
     }
 }
