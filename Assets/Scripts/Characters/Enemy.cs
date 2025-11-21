@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    private Vector2 _direction = new Vector2(1, 0);
+    private Vector2 _direction = Vector2.right;
 
-    [SerializeField] private float patrolPointA;
-    [SerializeField] private float patrolPointB;
+    [SerializeField] private Transform patrolPointA;
+    [SerializeField] private Transform patrolPointB;
 
     [SerializeField] private float minChangeGravityCooldown = 1.5f;
     [SerializeField] private float maxChangeGravityCooldown = 4f;
@@ -49,11 +49,11 @@ public class Enemy : Character
 
     private void CheckPatrol()
     {
-        if (_direction.x > 0 && transform.position.x >= patrolPointB)
+        if (_direction.x > 0 && transform.position.x >= patrolPointB.position.x)
         {
             _direction.x = -1;
         }
-        else if (_direction.x < 0 && transform.position.x <= patrolPointA)
+        else if (_direction.x < 0 && transform.position.x <= patrolPointA.position.x)
         {
             _direction.x = 1;
         }

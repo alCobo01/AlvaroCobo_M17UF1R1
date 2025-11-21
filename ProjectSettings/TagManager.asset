@@ -41,5 +41,32 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: 1Foreground
+    uniqueID: 213834493
+    locked: 0
+  - name: 2Clouds
+    uniqueID: 3940630035
+    locked: 0
+  - name: 3BackElements
+    uniqueID: 2118975049
+    locked: 0
+  - name: Water
+    uniqueID: 2933151609
+    locked: 0
+  - name: 3Terrain
+    uniqueID: 3314173827
+    locked: 0
+  - name: 5Characters
+    uniqueID: 1200344531
+    locked: 0
+  - name: 4Player
+    uniqueID: 714285231
+    locked: 0
+  - name: Enemy
+    uniqueID: 2265776887
+    locked: 0
+  - name: 6FrontElements
+    uniqueID: 2485995799
+    locked: 0
   m_RenderingLayers:
   - Default

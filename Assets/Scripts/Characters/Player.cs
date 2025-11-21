@@ -7,7 +7,7 @@ public class Player : Character, IPlayerActions
 {
     public UnityEvent OnPlayerDied;
 
-    [SerializeField] private GameObject _stateBox;
+    [SerializeField] private StateBox stateBoxController;
     [SerializeField] private SfxTrack jumpSfx;
 
     private InputSystem_Actions _inputActions;
@@ -44,10 +44,7 @@ public class Player : Character, IPlayerActions
         _animationBehaviour.SetSpeed(horizontalSpeed);
     }
 
-    private void FixedUpdate()
-    {
-        _moveBehaviour.MoveCharacter(_moveInput);
-    }
+    private void FixedUpdate() => _moveBehaviour.MoveCharacter(_moveInput);
 
     public void OnChangeGravity(InputAction.CallbackContext context)
     {
@@ -85,7 +82,7 @@ public class Player : Character, IPlayerActions
         {
             _canChangeGravity = false;
             _currentInteractable = interactable;
-            _stateBox.SetActive(true);
+            stateBoxController.Show();
         }  
     }
 
@@ -97,7 +94,7 @@ public class Player : Character, IPlayerActions
             {
                 _canChangeGravity = true;
                 _currentInteractable = null;
-                _stateBox.SetActive(false);
+                stateBoxController.Hide();
             } 
         }
     }

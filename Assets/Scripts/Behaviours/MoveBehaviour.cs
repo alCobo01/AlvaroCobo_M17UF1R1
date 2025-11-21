@@ -8,10 +8,7 @@ public class MoveBehaviour : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 1.5f;
     [SerializeField] private float velocityMultiplier = 8f;
 
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
+    private void Awake() => _rb = GetComponent<Rigidbody2D>();
 
     public void MoveCharacter(Vector2 direction)
     {
@@ -21,19 +18,11 @@ public class MoveBehaviour : MonoBehaviour
         _rb.linearVelocity = new Vector2(newVelocityX, currentVelocityY);
     }
 
-    public void SetGravityScale(float gravityScale)
-    {
-        _rb.gravityScale = gravityScale;
-    }
+    public void SetGravityScale(float gravityScale) => _rb.gravityScale = gravityScale;
 
     public bool IsGrounded()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer);
         return hit.collider != null;
-    }
-
-    public float GetVerticalSpeed()
-    {
-        return _rb.linearVelocityY;
     }
 }
