@@ -43,9 +43,13 @@ This project adheres to SOLID principles to ensure code maintainability and scal
 
 | Action | Input (Keyboard) |
 | :--- | :--- |
-| **Move** | `A` / `D` or `Left Stick` |
+| **Move** | `A` / `D` |
 | **Switch Gravity** | `Space`|
 | **Interact** | `E` |
+
+## Build
+
+The build can be found in the `Build` folder, or in the `Releases` GitHub tab.
 
 ---
 
